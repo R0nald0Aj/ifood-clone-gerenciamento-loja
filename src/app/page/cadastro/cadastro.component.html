@@ -1,0 +1,36 @@
+<div class="container">
+    <div class=" row shadow p-3 m-auto bg-body-tertiary rounded">
+        <div class="col-md-7  d-flex flex-column text-center">
+             <img src="../../../assets/ifood.jpg"  class="img-fluid p-5" alt="">
+          </div>
+        <div class="col-md-5 border py-5">
+             <h3 class=" text-center">Cadastre seu négocio e venda,O iFood tem tudo,
+                só falta você!</h3>
+
+            <form  class="p-3" [formGroup]="formCadastro" #formCad= "ngForm">
+              <label for="name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="name" placeholder="nome.." required>
+              
+
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="email@email.com" required>
+              
+              <label for="password" class="form-label">Password</label>
+              
+              <input type="password" class="form-control" id="password" placeholder="senha" aria-describedby="passwordhelp" required> 
+              <div id="passwordhelp" class="form-text">
+                  <span>Senha deve conter mais de 5 caracteres</span>
+               </div>
+              <br>
+              <button type="submit" class="btn btn-danger">Cadastrar</button>
+          </form>
+           
+          <div class="text-center">
+              <p class="lead fs-6">
+                  ja tem conta?
+                  <a routerLink="/login">Faça o Login</a>
+              </p>
+          </div>
+        </div>
+  </div>
+</div>

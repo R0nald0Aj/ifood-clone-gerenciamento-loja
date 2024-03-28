@@ -1,0 +1,55 @@
+
+<div class=" mt-5">
+    <div  class="row container shadow p-3  m-auto bg-body-tertiary rounded">
+        <div class="col-md-7 bg-gradient d-flex flex-column text-center">
+             <img src="../../../assets/image/hq720.jpg" class="img-fluid p-5 tex " alt="" >
+        </div>
+        <div class="col-md-5  border py-5">
+          <h3 class="text-center">Faça o Login Para Gerenciar sua loja</h3>
+          <form class="p-5"  (ngSubmit) ='login()' [formGroup]="form" #formDir="ngForm">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                  formControlName="email"
+                  type="email" 
+                  class="form-control" 
+                  id="email" 
+                  placeholder="email@email.com"
+                  required   
+              >
+              <div *ngIf="email?.invalid && formDir.submitted">
+                 <p *ngIf="email?.errors?.['required'] " style="color: red;">email inválido</p>
+                 <p *ngIf="email?.errors?.['email'] " style="color: red;">email precisa conter "@" e ".com"</p>
+              </div>
+          
+              <label for="password" class="form-label">Senha</label>
+              <input 
+                 formControlName="password"
+                 type="password" 
+                 class="form-control" 
+                 id="password" 
+                 placeholder="senha" 
+                  required
+                 aria-describedby="passwordhelp"
+              > 
+                <div *ngIf="password?.invalid && formDir.submitted "
+                  id="passwordhelp" 
+                  class="form-text">
+                    <span style="color: red;">Senha deve conter mais de 5 caracteres</span>
+                </div>
+              <br>
+              <button id="btn-login" class="btn btn-danger text-sm-center">Login</button>
+          </form>
+       
+          <div class="text-center">
+              <div class="text-center">
+                  <p class="lead fs-6">
+                     Não tem conta?
+                     <a routerLink="/cadastro" >Cadastre-se</a>
+                   </p>
+              </div>
+          
+        </div>
+  </div>
+
+</div>
+<app-loading [isLosading]="isLosadingLogin"></app-loading>
