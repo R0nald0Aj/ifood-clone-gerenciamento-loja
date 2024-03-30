@@ -7,22 +7,57 @@
              <h3 class=" text-center">Cadastre seu négocio e venda,O iFood tem tudo,
                 só falta você!</h3>
 
-            <form  class="p-3" [formGroup]="formCadastro" #formCad= "ngForm">
+            <form  class="p-3" (ngSubmit)="cadastrar()" [formGroup]="formCadastro" #formCad= "ngForm">
               <label for="name" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="name" placeholder="nome.." required>
-              
+              <input type="text" 
+                     class="form-control" 
+                     formControlName="name"
+                     id="name" placeholder="nome.." 
+                     required
+                    >
+            
+                 <app-message 
+                 *ngIf="name?.invalid && formCad.submitted"
+                   [message]="errorMessenger[0]"></app-message
+                 >
 
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="email@email.com" required>
-              
+              <input type="email" 
+                     class="form-control" 
+                     id="email" 
+                     formControlName="email"
+                     placeholder="email@email.com" 
+                     required
+                    >
+                  
+                    <app-message 
+                    *ngIf="email?.invalid && formCad.submitted"
+                      [message]="errorMessenger[1]"></app-message
+                    >
+                    <app-message 
+                    *ngIf="email?.errors?.['email']"
+                      [message]="errorMessenger[2]"></app-message
+                    >
+                   
+            
+
               <label for="password" class="form-label">Password</label>
-              
-              <input type="password" class="form-control" id="password" placeholder="senha" aria-describedby="passwordhelp" required> 
-              <div id="passwordhelp" class="form-text">
-                  <span>Senha deve conter mais de 5 caracteres</span>
-               </div>
+              <input type="password" 
+                     class="form-control" 
+                     formControlName="password"
+                     id="password" 
+                     placeholder="senha" 
+                     aria-describedby="passwordhelp" 
+                     required
+                    > 
+
+                    <app-message 
+                    *ngIf="password?.invalid && formCad.submitted || password?.errors?.['minLength']"
+                      [message]="errorMessenger[3]"></app-message
+                    >
               <br>
-              <button type="submit" class="btn btn-danger">Cadastrar</button>
+
+              <button class="btn btn-danger">Cadastrar</button>
           </form>
            
           <div class="text-center">
@@ -34,3 +69,4 @@
         </div>
   </div>
 </div>
+<app-loading [isLosading]="isLosadingLogin"></app-loading>

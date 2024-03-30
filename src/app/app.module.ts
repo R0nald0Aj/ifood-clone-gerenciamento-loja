@@ -12,6 +12,8 @@ import { FormUserComponent } from './components/form-user/form-user.component';
 
 import { HomePageComponent } from './page/home-page/home-page.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MessageComponent } from './components/message/message.component';
+
 
 
 
@@ -22,7 +24,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     CadastroComponent,
     FormUserComponent,
     HomePageComponent,
-    LoadingComponent
+    LoadingComponent,
+    MessageComponent
+
   ],
   imports: [
     BrowserModule,
