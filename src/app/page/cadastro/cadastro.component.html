@@ -18,7 +18,7 @@
             
                  <app-message 
                  *ngIf="name?.invalid && formCad.submitted"
-                   [message]="errorMessenger[0]"></app-message
+                   [message]="erroMessage.getErroMessege(0)"></app-message
                  >
 
               <label for="email" class="form-label">Email</label>
@@ -32,11 +32,11 @@
                   
                     <app-message 
                     *ngIf="email?.invalid && formCad.submitted"
-                      [message]="errorMessenger[1]"></app-message
+                      [message]="erroMessage.getErroMessege(1)"></app-message
                     >
                     <app-message 
                     *ngIf="email?.errors?.['email']"
-                      [message]="errorMessenger[2]"></app-message
+                      [message]="erroMessage.getErroMessege(2)"></app-message
                     >
                    
             
@@ -53,7 +53,7 @@
 
                     <app-message 
                     *ngIf="password?.invalid && formCad.submitted || password?.errors?.['minLength']"
-                      [message]="errorMessenger[3]"></app-message
+                      [message]="erroMessage.getErroMessege(3)"></app-message
                     >
               <br>
 

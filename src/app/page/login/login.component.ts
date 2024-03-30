@@ -2,6 +2,7 @@ import { Component, OnInit, inject, } from '@angular/core';
 import { FormControl,FormGroup,FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/serivce/auth-service.service';
+import { ErrorMessagesService } from 'src/app/utils/error-messages.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,9 @@ export class LoginComponent  implements OnInit{
   form! : FormGroup 
   constructor(
     private router : Router,
-    private authService : AuthServiceService){
+    private authService : AuthServiceService,
+    public errorMessager:ErrorMessagesService
+    ){
   
   }
   ngOnInit(): void {

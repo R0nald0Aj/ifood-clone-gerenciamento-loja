@@ -13,6 +13,7 @@ import { FormUserComponent } from './components/form-user/form-user.component';
 import { HomePageComponent } from './page/home-page/home-page.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MessageComponent } from './components/message/message.component';
+;
 
 
 
@@ -25,7 +26,8 @@ import { MessageComponent } from './components/message/message.component';
     FormUserComponent,
     HomePageComponent,
     LoadingComponent,
-    MessageComponent
+    MessageComponent,
+
 
   ],
   imports: [

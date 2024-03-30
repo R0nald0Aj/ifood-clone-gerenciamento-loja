@@ -16,11 +16,17 @@
                   placeholder="email@email.com"
                   required   
               >
-              <div *ngIf="email?.invalid && formDir.submitted">
-                 <p *ngIf="email?.errors?.['required'] " style="color: red;">email inválido</p>
-                 <p *ngIf="email?.errors?.['email'] " style="color: red;">email precisa conter "@" e ".com"</p>
-              </div>
-          
+              <app-message 
+                   *ngIf="email?.invalid && formDir.submitted "
+                      [message]="errorMessager.getErroMessege(1)"></app-message
+                    >
+                
+              <app-message 
+                *ngIf="email?.errors?.['email'] "
+                 [message]="errorMessager.getErroMessege(2)"></app-message
+                >        
+       
+
               <label for="password" class="form-label">Senha</label>
               <input 
                  formControlName="password"
@@ -31,11 +37,11 @@
                   required
                  aria-describedby="passwordhelp"
               > 
-                <div *ngIf="password?.invalid && formDir.submitted "
-                  id="passwordhelp" 
-                  class="form-text">
-                    <span style="color: red;">Senha deve conter mais de 5 caracteres</span>
-                </div>
+
+                <app-message 
+                *ngIf="password?.invalid && formDir.submitted "
+                 [message]="errorMessager.getErroMessege(3)"></app-message
+                >    
               <br>
               <button id="btn-login" class="btn btn-danger text-sm-center">Login</button>
           </form>

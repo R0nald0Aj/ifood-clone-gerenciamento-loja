@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/serivce/auth-service.service';
+import { ErrorMessagesService } from 'src/app/utils/error-messages.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,14 +12,12 @@ import { AuthServiceService } from 'src/app/serivce/auth-service.service';
 export class CadastroComponent  implements OnInit{
 formCadastro!:FormGroup 
 isLosadingLogin : boolean =false
-errorMessenger :string[] = [
-  "nome invalido",
-  "email invalido",
-  "email deve conter '@' e '.com'",
-  "Senha invalido,campo deve conter pelo menos 5 caracteres",
-]
 
-constructor(private authService:AuthServiceService,private router : Router){
+constructor(
+  private authService:AuthServiceService,
+  private router : Router,
+  public erroMessage : ErrorMessagesService
+  ){
 
 }
   ngOnInit(): void {
