@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, } from '@angular/core';
 import { FormControl,FormGroup,FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/serivce/auth-service.service';
+import { AuthServiceService } from 'src/app/service/auth-service.service';
 import { ErrorMessagesService } from 'src/app/utils/error-messages.service';
 @Component({
   selector: 'app-login',
@@ -42,7 +42,7 @@ export class LoginComponent  implements OnInit{
     setTimeout(() => {
       const retorno = this.authService.login( this.form.value.email ?? '',this.form.value.password ?? '')
       if(retorno){
-        //this.router.navigate(['home']);
+        this.router.navigate(['home']);
       }
       this.isLosadingLogin = false
     }, 3000);

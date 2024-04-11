@@ -1,0 +1,112 @@
+
+<div class="container my-5">
+   <h3>Gerencia Dados da Sua Loja</h3>
+     <form  #formCad="ngForm" (ngSubmit)="cadastrar()" [formGroup]="formLoja">
+      <div class=" bg-danger vh-25 banner-container p-3  border border-black position-relative ">
+        <input type="file" class="form-control  w-50 position-absolute top-75 border border-black start-50" (change)="onImageCapBannerAttached($event)" accept=".jpeg,.png,.jpg"  name="imge_loja_capa"> 
+         <img [src]="imgCapaBnner" class=" img-fluid rounded mb-3" alt="image de capa">
+         <app-message  
+      *ngIf="imageCapa?.invalid && formCad.submitted"
+       [message]="'Insira uma Imagem para o Banner da sua Loja'"></app-message>
+      </div>
+      
+
+      <div class="row  px-2 my-3">
+         <div class="col-md-7  p-2" >
+            <img [src]="imgPerfil" class="rounded-circle img-fluid w-50 border border-black"   alt="logo">
+            <input type="file" class="form-control w-50 border border-black mt-sm-3" (change)="onImagePefilAttached($event)" accept=".jpeg,.png,.jpg"  name="imge_loja_perfil"> 
+            <app-message 
+            *ngIf="imagePerfilCirle?.invalid && formCad.submitted"
+             [message]="'Insira uma Imagem para o Perfil da sua Loja'"></app-message>
+          </div>
+         
+         <div class="form-floating  align-items-bottom col-md-5 mt-4">
+            <input type="text" class="form-control "  formControlName="nameLoja" id="floatingInputInvalid" placeholder="Noda da sua loja" value="test@example.com">
+            <label for="floatingInputInvalid">Nome da Loja</label>
+
+            <app-message 
+            *ngIf="nameLoja?.invalid && formCad.submitted"
+             [message]="'Campo nome da loja não pode ser vazio'"></app-message>
+          </div>
+      </div>
+
+      <div class="row g-3">
+         <div class="col-md-6">
+           <label for="inputDescription" class="form-label">Descrição</label>
+           <input type="text" formControlName="descriptionLoja" class="form-control" 
+                  placeholder="Descreva um pouco sobre sua seu serviço" id="inputDescription">
+        
+                  <app-message 
+                  *ngIf="descriptionLoja?.invalid && formCad.submitted"
+                  [message]="'Campo descrição não pode ser vazio'"></app-message>  
+         </div>
+        
+
+         <div class="col-md-6">
+           <label for="cnpj" class="form-label">CNPJ</label>
+           <input type="text" formControlName="cnpj" class="form-control" id="cnpj">
+
+           <app-message 
+          *ngIf="cnpj?.invalid && formCad.submitted"
+           [message]="'Campo cnpj não pode ser vazio'"></app-message>
+         </div>
+         
+
+         <div class="col-8">
+           <label for="Phone" class="form-label">Telefone</label>
+           <input type="text" formControlName="phone" class="form-control" id="inputPhone" placeholder="(00) 1234-3453">
+
+           <app-message 
+           *ngIf="phone?.invalid && formCad.submitted"
+            [message]="'Campo telefone não pode ser vazio'"></app-message>
+         </div>
+         <div class="col-4">
+          <label for="speciality" class="form-label">Especialida</label>
+          <input type="text" formControlName="speciality" class="form-control" id="speciality" placeholder="Minha especialidade">
+
+          <app-message 
+          *ngIf="speciality?.invalid && formCad.submitted"
+           [message]="'Campo especialidade não pode ser vazio'"></app-message>
+        </div>
+         
+         <div class="col-md-6">
+           <label for="inputCity" class="form-label">Cidade</label>
+           <input type="text" formControlName="city" placeholder="São Paulo" class="form-control" id="inputCity">
+              
+           <app-message 
+            *ngIf="city?.invalid && formCad.submitted"
+              [message]="'Campo cidade não pode ser vazio'"></app-message>
+         </div>
+         <div class="col-md-4">
+           <label for="inputState" class="form-label">Selcecione uma Categoria</label>
+           <select id="inputState" class="form-select">
+             <option selected>Lanche</option>
+             <option selected>Pizza</option>
+             <option selected>Japonesa</option>
+             <option selected>Brasileira</option>
+             <option>...</option>
+           </select>
+         </div>
+         <div class="col-md-2">
+           <label for="inputZip" class="form-label">CEP</label>
+           <input type="text" class="form-control" formControlName="zipCode" placeholder="12-334332" id="inputZip">
+
+           <app-message 
+           *ngIf="zipCode?.invalid && formCad.submitted"
+            [message]="'Campo cep não pode ser vazio'"></app-message>
+         </div>
+         <div class="col-12">
+          <label for="inputAddress" class="form-label">Endereço</label>
+          <input type="text" formControlName="address" class="form-control" id="inputAddress" placeholder="Rua 25 , loja 3 , meu endereço">
+          
+          <app-message 
+          *ngIf="address?.invalid && formCad.submitted"
+           [message]="'Campo Endereço não pode ser vazio'"></app-message>
+        </div>
+        
+         <div class="col-12">
+           <button type="submit" class="btn btn-danger">Cadastrar</button>
+         </div>
+       </div>
+     </form>
+</div>

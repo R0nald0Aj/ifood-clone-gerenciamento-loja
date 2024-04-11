@@ -1,0 +1,14 @@
+.banner-container{
+    height: 65vh;
+    text-align: center;
+}
+.btn-container{
+    padding: 12px;
+
+    
+ 
+}
+.banner-container > img{
+    height: 100%;
+    width: 100%;
+}
