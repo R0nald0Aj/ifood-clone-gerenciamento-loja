@@ -1,1 +1,68 @@
-<p>index works!</p>
+<div class="container">
+  <h3 class=" mt-5 text-body-tertiary">Resumo Financeiro</h3>
+  <div class=" row mb-5  justify-content-center rounded">
+     <div class="rounded border col-md-3 py-4">
+       <app-card-info 
+            titleCardInfo="Total de vendas"
+           valorInfo="5.900,00" 
+           textInfo="200 Produdos vendidos"
+           subTextInfo="16 Cancelados vendidos"
+           linkRoute="/"
+           titleLink="ver mais > "
+           ></app-card-info>
+     </div>
+     <div class="rounded border col-md-3 mx-4 py-4">
+       <app-card-info
+          titleCardInfo="Repasse futuros"
+          valorInfo="223,00" 
+          textInfo="Pago,na conta 1232-3"
+
+          linkRoute="/dashboard"
+          titleLink="ver detalhes >"
+       ></app-card-info>
+     </div>
+     
+     <div class="rounded border col-md-3 p-4">
+       <app-card-info
+        titleCardInfo="Repasses Agendados"
+        valorInfo="1.540,00" 
+        textInfo="Repasse Agendado Para 13/05/2024"
+    
+        linkRoute="/cadastro"
+        titleLink="ver repasses calculados >"
+       >
+       </app-card-info>
+    </div>
+  </div>
+
+   
+  <h3 class=" mt-5 text-body-tertiary">Lançamentos do Periodo</h3>
+  <div>
+     <app-table-info [produtos]="produtos"></app-table-info>
+  </div>   
+
+  <h3 class="text-body-tertiary mt-5 ">Cardapio</h3>
+   <div class="p-2 border rounded">
+    <owl-carousel-o [options]="customOptions" >
+      
+      <ng-container  *ngFor="let item of apiData">
+        <ng-template carouselSlide  [id]="item.id">
+          <div class="card m-2">
+            <img [src]="item.url" class="card-img-top object-fit-cover border rounded" style="height: 150px;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Meu produto</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary float-end">ver mais</a>
+            </div>
+          </div>
+        </ng-template> 
+
+      </ng-container>
+  
+    </owl-carousel-o>
+   </div>
+  
+     
+       
+    
+</div>

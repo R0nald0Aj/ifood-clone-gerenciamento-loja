@@ -11,14 +11,12 @@ import { IndexComponent } from './page/index/index.component';
 const routes: Routes = [
    {
     path:'' ,redirectTo : 'login',
-
     pathMatch: 'full',
     title : 'login'
   },
   {
     path:'login' ,
     component:LoginComponent,
-    pathMatch: 'full',
     title : 'login'
   },
   {
@@ -32,7 +30,7 @@ const routes: Routes = [
     title :'Home' ,
     children : [
       {
-        path:'home',
+        path : 'dashboard',
         component : IndexComponent,
         title : "Loja"
       },

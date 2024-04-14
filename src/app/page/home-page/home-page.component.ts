@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
+
+  constructor (private route : Router){
+    
+  }
+  ngOnInit(): void {
+     this.userLogged()
+  } 
+
+  userLogged(){
+    setTimeout(() => {
+      console.log("nvaigate")
+      this.route.navigate(['home/dashboard']);
+    }, 1000);
+  }
+ 
 
 }

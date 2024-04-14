@@ -19,7 +19,10 @@ import { TaxtempoComponent } from './page/taxtempo/taxtempo.component';
 import { CardapioComponent } from './page/cardapio/cardapio.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IndexComponent } from './page/index/index.component';
-;
+import { CarouselModule } from 'ngx-owl-carousel-o'
+import { BrowserAnimationsModule} from'@angular/platform-browser/animations';
+import { CardInfoComponent } from './components/card-info/card-info.component';
+import { TableInfoComponent } from './components/table-info/table-info.component'
 
 
 
@@ -38,14 +41,18 @@ import { IndexComponent } from './page/index/index.component';
     TaxtempoComponent,
     CardapioComponent,
     IndexComponent,
-
-
+    CardInfoComponent,
+    TableInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule,ReactiveFormsModule, FontAwesomeModule
+    FormsModule,
+    ReactiveFormsModule, 
+    FontAwesomeModule, 
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
