@@ -62,7 +62,7 @@ produtos: Produto[] = [
     id : '1',
     nomeProduto:"Hamburguer ",
     valorDeVenda:12.32,
-    valorRecebido:10.01,
+    valorRecebido:10.01 ,
     data:"12/12/2024",
     status:"finalizado"
   },

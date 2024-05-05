@@ -13,9 +13,9 @@
          <tr *ngFor=" let produto of produtos">
           <td>{{produto.id}}</td>
           <td>{{produto.nomeProduto}}</td>
-          <td>R${{produto.valorDeVenda}}</td>
-          <td>R${{produto.valorRecebido}}</td>
-          <td>{{produto.data}}</td>
+          <td>{{produto.valorDeVenda  | currency:'BRL'}}</td>
+          <td>{{produto.valorRecebido | currency:'BRL'}}</td>
+          <td>{{produto.data | date:'dd/MM/yyyy'}}</td>
           <td>{{produto.status}}</td> 
         </tr>     
     </tbody>

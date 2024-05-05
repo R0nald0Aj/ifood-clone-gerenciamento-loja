@@ -1,5 +1,5 @@
-
-<div class=" mt-5">
+<app-notification></app-notification>
+<div class="mt-5">
     <div  class="row container shadow p-3  m-auto bg-body-tertiary rounded">
         <div class="col-md-7 bg-gradient d-flex flex-column text-center">
              <img src="../../../assets/image/hq720.jpg" class="img-fluid p-5 tex " alt="" >
@@ -37,7 +37,6 @@
                   required
                  aria-describedby="passwordhelp"
               > 
-
                 <app-message 
                 *ngIf="password?.invalid && formDir.submitted "
                  [message]="errorMessager.getErroMessege(3)"></app-message
@@ -52,10 +51,8 @@
                      Não tem conta?
                      <a routerLink="/cadastro" >Cadastre-se</a>
                    </p>
-              </div>
-          
+              </div>  
         </div>
   </div>
-
 </div>
 <app-loading [isLosading]="isLosadingLogin"></app-loading>

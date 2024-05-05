@@ -4,7 +4,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Observer } from 'rxjs';
-import { ReaderFileService } from 'src/app/service/reader-file.service';
+import { CepService } from 'src/app/service/cep/cep.service';
+import { ReaderFileService } from 'src/app/service/reader_file_service/reader-file.service';
+import { Address } from '../../model/address';
 
 
 @Component({
@@ -19,11 +21,16 @@ export class DadosLojaComponent  implements OnInit{
   formLoja! : FormGroup
   imgPerfil : string ="../../../assets/ifood.jpg"
   imgCapaBnner : string ="../../../assets/ifood.jpg"
-  srs = ""
+  srs = "";
+  zipCodeValue = "";
   
-  
-  constructor(private readerFileService:ReaderFileService){}
+  constructor(private readerFileService:ReaderFileService,private cepService:CepService){
+      
+  }
+
   ngOnInit(): void {
+    
+
     this.formLoja = new FormGroup({
       imageCapa : new FormControl("",[Validators.required]),
       imagePerfilCirle : new FormControl("",[Validators.required]),
@@ -33,10 +40,33 @@ export class DadosLojaComponent  implements OnInit{
       phone :new FormControl("321321321",[Validators.required]),
       speciality : new FormControl("1",[Validators.required]),
       city : new FormControl("sp",[Validators.required]),
+      zipCode : new FormControl("",[Validators.required,Validators.maxLength(8),Validators.minLength(8)]),
       category : new FormControl("a",[Validators.required]),
-      zipCode:new FormControl("132323",[Validators.required]),
       address : new FormControl("dasdsadsadsada",[Validators.required])
     })
+    
+  }
+
+  findAddress(cchosedZipCode :string){
+    console.log(cchosedZipCode);
+    if(cchosedZipCode.length ===  8){
+      this.cepService.findAdderss(cchosedZipCode).subscribe(({
+       next: (data) =>{
+          console.log( data.bairro)
+           if(data.bairro === undefined ){
+            this.formLoja.get('zipCode')?.setErrors(Validators.pattern("cep invalido"))
+            console.log(`erro ao buscar cep erro ${data}`)
+           }else{
+             this.formLoja.patchValue({'city': data.uf})
+             this.formLoja.patchValue({'address': `${data.bairro ??''},${data.logradouro ?? ''} ,${data.complemento ??''},${data.localidade??''}-${data.uf ??''}`})
+           }
+
+       },
+       error:( err) =>{
+        console.log(err)
+       }
+    }));
+    }
   }
  
   onImageCapBannerAttached(event: any){

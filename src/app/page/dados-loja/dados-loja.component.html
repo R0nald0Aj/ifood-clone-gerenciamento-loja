@@ -1,6 +1,6 @@
 
 <div class="container my-5">
-   <h3>Gerencia Dados da Sua Loja</h3>
+   <h3 class="p-2">Gerencia Dados da sua loja</h3>
      <form  #formCad="ngForm" (ngSubmit)="cadastrar()" [formGroup]="formLoja">
       <div class=" bg-danger vh-25 banner-container p-3  border border-black position-relative ">
         <input type="file" class="form-control  w-50 position-absolute top-75 border border-black start-50" (change)="onImageCapBannerAttached($event)" accept=".jpeg,.png,.jpg"  name="imge_loja_capa"> 
@@ -61,14 +61,38 @@
             [message]="'Campo telefone não pode ser vazio'"></app-message>
          </div>
          <div class="col-4">
-          <label for="speciality" class="form-label">Especialida</label>
+          <label for="speciality" class="form-label">Especialidade</label>
           <input type="text" formControlName="speciality" class="form-control" id="speciality" placeholder="Minha especialidade">
 
           <app-message 
           *ngIf="speciality?.invalid && formCad.submitted"
            [message]="'Campo especialidade não pode ser vazio'"></app-message>
         </div>
+
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Selcecione uma Categoria</label>
+          <select id="inputState" class="form-select">
+            <option selected>Lanche</option>
+            <option selected>Pizza</option>
+            <option selected>Japonesa</option>
+            <option selected>Brasileira</option>
+            <option>...</option>
+          </select>
+        </div>
          
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">CEP</label>
+          <input type="text" class="form-control" formControlName="zipCode" #valueZipCode (change)="findAddress(valueZipCode.value)" minlength="8" maxlength="8" placeholder="00-334-332" id="inputZip">
+        
+          <app-message 
+          *ngIf="zipCode?.invalid && formCad.submitted"
+           [message]="'CEP deve conter exatamente 6 numeros'"></app-message>
+
+           <app-message 
+          *ngIf="zipCode?.invalid && valueZipCode.value.length == 8"
+           [message]="'CEP invalid ou não encontrado '"></app-message>
+        </div>
+
          <div class="col-md-6">
            <label for="inputCity" class="form-label">Cidade</label>
            <input type="text" formControlName="city" placeholder="São Paulo" class="form-control" id="inputCity">
@@ -77,24 +101,8 @@
             *ngIf="city?.invalid && formCad.submitted"
               [message]="'Campo cidade não pode ser vazio'"></app-message>
          </div>
-         <div class="col-md-4">
-           <label for="inputState" class="form-label">Selcecione uma Categoria</label>
-           <select id="inputState" class="form-select">
-             <option selected>Lanche</option>
-             <option selected>Pizza</option>
-             <option selected>Japonesa</option>
-             <option selected>Brasileira</option>
-             <option>...</option>
-           </select>
-         </div>
-         <div class="col-md-2">
-           <label for="inputZip" class="form-label">CEP</label>
-           <input type="text" class="form-control" formControlName="zipCode" placeholder="12-334332" id="inputZip">
-
-           <app-message 
-           *ngIf="zipCode?.invalid && formCad.submitted"
-            [message]="'Campo cep não pode ser vazio'"></app-message>
-         </div>
+         
+        
          <div class="col-12">
           <label for="inputAddress" class="form-label">Endereço</label>
           <input type="text" formControlName="address" class="form-control" id="inputAddress" placeholder="Rua 25 , loja 3 , meu endereço">

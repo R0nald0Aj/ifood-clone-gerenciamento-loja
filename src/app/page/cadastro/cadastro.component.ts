@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/service/auth-service.service';
+import { AuthServiceService } from 'src/app/service/auth_service/auth-service.service';
 import { ErrorMessagesService } from 'src/app/utils/error-messages.service';
 
 @Component({
@@ -32,14 +32,18 @@ constructor(
   cadastrar(){
      if (this.formCadastro.valid) {
        this.isLosadingLogin = true
-       setTimeout(()=>{
-        const result  = this.authService.cadastrarUsuario(this.name?.value,this.email?.value,this.password?.value)
-        if (result) {
-             this.router.navigate(['home'])
-        }
-        this.isLosadingLogin = false;
-       },3000)
-           
+      
+        this.authService.cadastrarUsuario(this.email?.value,this.password?.value).subscribe({
+          next:(data)=>{
+             this.authService.logout();
+            this.router.navigate(['/login'])
+          },
+          error :(erro)=>{
+            console.log(erro)
+          }
+        })
+        
+        this.isLosadingLogin = false;  
         }
   }
 

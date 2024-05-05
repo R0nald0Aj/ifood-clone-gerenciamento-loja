@@ -7,7 +7,7 @@ import { DadosLojaComponent } from './page/dados-loja/dados-loja.component';
 import { TaxtempoComponent } from './page/taxtempo/taxtempo.component';
 import { CardapioComponent } from './page/cardapio/cardapio.component';
 import { IndexComponent } from './page/index/index.component';
-
+import { authGuard } from './guard/auth.guard'; 
 const routes: Routes = [
    {
     path:'' ,redirectTo : 'login',
@@ -28,6 +28,7 @@ const routes: Routes = [
     path:'home',
     component :HomePageComponent,
     title :'Home' ,
+    canActivate : [authGuard],
     children : [
       {
         path : 'dashboard',

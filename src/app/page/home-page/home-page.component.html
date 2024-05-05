@@ -1,5 +1,11 @@
-<div >
-    <app-nav-menu></app-nav-menu>
+<div class="d-flex flex-column justify-content-betweeb">
+    <div >
+        <app-nav-menu></app-nav-menu>
+    </div>
+   <!-- // <app-loading [isLosading]="isLosadingLogin"></app-loading> -->
+    <router-outlet></router-outlet>
+    <br>
+    <div class="mt-4">
+        <app-footer ></app-footer>
+    </div>
 </div>
-
-<router-outlet></router-outlet>
